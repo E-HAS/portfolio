@@ -2,186 +2,303 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>현재호 - 개발자 포트폴리오</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>포트폴리오 - 현재호</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background: #f9fafc;
+      color: #333;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    header {
+      background: #1f2937;
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    header h1 { font-size: 3rem; margin-bottom: 10px; }
+    header p { font-size: 1.2rem; color: #ccc; }
+
+    nav {
+      background: #111827;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
+    }
+    nav a {
+      color: #9ca3af;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #ffffff; }
+
+    section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    section h2 {
+      font-size: 2rem;
+      border-left: 5px solid #2563eb;
+      padding-left: 15px;
+      margin-bottom: 30px;
+      color: #1e3a8a;
+    }
+
+    .tech-category {
+      margin-bottom: 30px;
+    }
+
+    .tech-category h3 {
+      font-size: 1.2rem;
+      color: #2563eb;
+      margin-bottom: 10px;
+    }
+
+    .stack-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .stack-icons span {
+      background: #eff6ff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #1d4ed8;
+    }
+
+    .project {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-bottom: 25px;
+    }
+
+    .project h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .project ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    .project ul li {
+      list-style-type: disc;
+      margin-bottom: 5px;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact a {
+      display: inline-block;
+      margin: 10px;
+      background: #1d4ed8;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .contact a:hover {
+      background: #2563eb;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #999;
+      font-size: 0.9rem;
+    }
+
+    [data-fade] {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    [data-fade].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
-<style>
-body {
-  margin: 0;
-  font-family: 'Noto Sans KR', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-  line-height: 1.6;
-}
-
-header {
-  background-color: #2c3e50;
-  color: white;
-  text-align: center;
-  padding: 2rem 1rem;
-}
-
-nav {
-  background-color: #ecf0f1;
-  text-align: center;
-  padding: 1rem;
-}
-
-nav a {
-  margin: 0 1rem;
-  color: #2c3e50;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-main {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-section {
-  margin-bottom: 3rem;
-}
-
-h2 {
-  color: #3498db;
-  border-bottom: 2px solid #3498db;
-  padding-bottom: 0.5rem;
-}
-
-.project {
-  margin-bottom: 1.5rem;
-}
-
-footer {
-  background-color: #2c3e50;
-  color: white;
-  text-align: center;
-  padding: 2rem 1rem;
-  margin-top: 4rem;
-}
-
-/* 반응형 */
-@media (max-width: 600px) {
-  nav a {
-    display: block;
-    margin: 0.5rem 0;
-  }
-
-  main {
-    padding: 0 0.5rem;
-  }
-}
-#skills {
-  font-family: 'Segoe UI', sans-serif;
-}
-
-#skills h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.skills-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.skill-row {
-  display: flex;
-  gap: 1rem;
-}
-
-.skill-key {
-  flex-basis: 150px;
-  font-weight: bold;
-  color: #333;
-}
-
-.skill-value {
-  flex: 1;
-  color: #555;
-}
-
-</style>
-
-
 <body>
+
   <header>
     <h1>현재호</h1>
-    <p>백엔드 개발자</p>
+    <p>사용자 니즈를 파악하고 이를 해결하기 위한 최적의 솔루션을 고민하는 개발자</p>
+    <p>단순히 기능을 구현하는 것을 넘어 "왜 이 기능이 필요한가", "사용자에게 어떤 가치를 줄 수 있는가"를 항상 생각하자</p>
   </header>
 
   <nav>
     <a href="#about">소개</a>
+    <a href="#career">경력</a>
+    <a href="#skills">기술스택</a>
     <a href="#projects">프로젝트</a>
-    <a href="#skills">기술</a>
     <a href="#contact">연락처</a>
   </nav>
 
-  <main>
-    <section id="about">
-      <h2>🙋 소개</h2>
-      <p>안녕하세요. 사용자 중심의 웹 애플리케이션을 개발하는 것을 좋아하는 성장 지향형 개발자 홍길동입니다.</p>
-    </section>
+  <section id="about" data-fade>
+    <h2>🙋‍♂️ 소개</h2>
+      <p>
+    저는 안정성과 확장성을 고려한 시스템 아키텍처 설계를 중시하며, 실사용자의 관점에서 문제를 해결해 나가는 백엔드 중심의 풀스택 개발자입니다.<br/><br/>
+    주로 Java 기반의 Spring Boot와 .NET 환경에서 API 설계, DB 모델링, 서버 운영 및 성능 최적화까지 전 과정을 책임감 있게 수행해왔으며,
+    다양한 외부 시스템 연동과 로그 분석, 실시간 처리 경험을 통해 복잡한 비즈니스 로직을 효과적으로 구현해 본 경험이 있습니다.<br/><br/>
+    “사용자에게 안정적인 서비스를 제공한다”는 원칙 아래, 기능의 완성도뿐 아니라 유지보수성과 협업의 효율성까지 고민하며 일합니다.
+  </p>
+  </section>
 
-    <section id="projects">
-      <h2>💻 프로젝트</h2>
-      <div class="project">
-        <h3>개인 포트폴리오 사이트</h3>
-        <p>HTML, CSS, JavaScript로 만든 정적 웹사이트</p>
-        <a href="https://github.com/yourname/portfolio" target="_blank">GitHub 보기</a>
-      </div>
-      <div class="project">
-        <h3>ToDo 웹앱</h3>
-        <p>Vue.js, Firebase를 이용한 실시간 할 일 관리 앱</p>
-        <a href="https://github.com/yourname/todo-app" target="_blank">GitHub 보기</a>
-      </div>
-    </section>
+<section id="career" data-fade>
+  <h2>💼 경력</h2>
+  <div class="project">
+    <div class="sub-title">(주) 엔비웨어 | 대리 <span class="date">(2021.03 ~ 2025.05)</span></div>
+	<p>SI 개발 및 유지보수 업무</p>
+	<p>데이터 모델링, 스키마 설계, SQL 튜닝</p>
+	<p>프론트·백엔드 개발 및 외부 API 연동</p>
+  </div>
+</section>
 
-<section id="skills">
-  <h2>🛠️ 기술 스택</h2>
-  <div class="skills-list">
-    <div class="skill-row">
-      <span class="skill-key">프론트엔드</span>
-      <span class="skill-value">JavaScript, jQuery, Vue.js, React</span>
+<section id="skills" data-fade>
+  <h2>💡 기술 스택</h2>
+
+  <div class="tech-category">
+    <h3>Frontend</h3>
+    <div class="stack-icons">
+      <span>JavaScript</span>
+      <span>jQuery</span>
     </div>
-    <div class="skill-row">
-      <span class="skill-key">백엔드</span>
-      <span class="skill-value">ASP.NET (C#), Spring Boot (Java, Security, MyBatis, JPA)</span>
+  </div>
+
+  <div class="tech-category">
+    <h3>Backend</h3>
+    <div class="stack-icons">
+      <span>ASP.NET (C#)</span>
+      <span>Spring Boot</span>
+      <span>Java</span>
+      <span>Security</span>
+      <span>MyBatis</span>
+      <span>JPA</span>
     </div>
-    <div class="skill-row">
-      <span class="skill-key">데이터베이스</span>
-      <span class="skill-value">MSSQL, MySQL, Redis</span>
+  </div>
+
+  <div class="tech-category">
+    <h3>Database</h3>
+    <div class="stack-icons">
+      <span>MSSQL</span>
+      <span>MySQL</span>
+      <span>Redis</span>
     </div>
-    <div class="skill-row">
-      <span class="skill-key">서버</span>
-      <span class="skill-value">Windows Server, Linux (Rocky)</span>
+  </div>
+
+  <div class="tech-category">
+    <h3>Server</h3>
+    <div class="stack-icons">
+      <span>Windows Server</span>
+      <span>Linux (Rocky)</span>
     </div>
-    <div class="skill-row">
-      <span class="skill-key">버전 관리</span>
-      <span class="skill-value">GitHub, SVN</span>
+  </div>
+
+  <div class="tech-category">
+    <h3>Version Control</h3>
+    <div class="stack-icons">
+      <span>GitHub</span>
+      <span>SVN</span>
     </div>
   </div>
 </section>
 
 
-    <section id="contact">
-      <h2>📬 연락처</h2>
-      <p>이메일: <a href="">woghfot@naver.com</a></p>
-      <p>GitHub: <a href="https://github.com/E-HAS" target="_blank">https://github.com/E-HAS</a></p>
-    </section>
-  </main>
+<section id="projects" data-fade>
+  <h2>🚀 프로젝트</h2>
+
+  <div class="project">
+    <h3>KT 지니TV 모바일 운영관리</h3>
+    <p><strong>기간:</strong> 2021.03 ~ 2025.05</p>
+    <ul>
+      <li>파일 입수, 콘텐츠, 메뉴, 관련 서버 로그 상세 및 단위 분석 기능 개발</li>
+      <li>사용자 진입 경로, 시청/구매 데이터를 기반으로 한 통계 및 시각화 기능 개발</li>
+      <li>콘텐츠 DRM (Multi DRM, FairPlay) 변환 및 관리 스키마 설계, 타 서버 API 연동 개발</li>
+      <li>프로모션 및 스포츠 이미지 관리 스키마 설계 및 기능 개발</li>
+      <li>채널 카테고리, 채널 정보, 콘텐츠, 시리즈, EPG 관리 스키마 수정 및 기능 개선</li>
+      <li>콘텐츠 배포 및 삭제 모니터링, 관련 기능 개선</li>
+      <li>Windows Server 기반 환경에서 IIS 웹 서버 설정, 배포 및 운영</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <h3>KT BizCollabo 문서 서비스</h3>
+    <p><strong>기간:</strong> 2021.10 ~ 2021.12</p>
+    <ul>
+      <li>암호화된 문서 처리 중 장애 발생 시, 파일 시그니처 확인을 통한 식별 및 분기 처리 기능 개발</li>
+      <li>실시간 문서 처리 현황 및 서버 리소스 사용량을 Redis 기반으로 실시간 모니터링 기능 구현</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <h3>KT Settop 광고리포트 시스템</h3>
+    <p><strong>기간:</strong> 2022.07 ~ 2024.02</p>
+    <ul>
+      <li>기존 UI 구조를 반응형 UI로 리디자인 및 재구성</li>
+      <li>성별, 연령, 지역, 시청 시간대, 프로그램 선호도 등 다양한 기준의 통계 및 시각화 기능 개발</li>
+      <li>셋톱박스 ↔ 모바일 간 ID 매핑 처리 기능 개발</li>
+      <li>대량 ID 요청에 따른 필터링, 스케줄링, 변환, 통계 처리 자동화 및 데이터 모델링 수행</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <h3>KT 게이트웨이 서버 운영관리</h3>
+    <p><strong>기간:</strong> 2024.10 ~ 2025.05</p>
+    <ul>
+      <li>관리자 편의성과 접근성을 고려한 반응형 UI 디자인 및 개발</li>
+      <li>웹 인증(Authentication) 및 인가(Authorization) 기능 구현</li>
+      <li>네트워크, 서비스, 채널, 상품, 편성 관리 및 타 서버 API 연동(동기화) 기능 개발</li>
+      <li>서버 간 API 연동 정보(요청/응답 시간, 성공/실패 등) 모니터링 기능 개발</li>
+      <li>네트워크, 서비스, 채널, 상품, 편성, 타 서버 API 로그 이력 데이터 모델링 및 스키마 설계</li>
+    </ul>
+  </div>
+</section>
+
+  <section id="contact" data-fade class="contact">
+    <h2>📬 연락처</h2>
+    <p>협업 및 문의는 언제든지 환영입니다.</p>
+    <a href="mailto:yourname@email.com">이메일 보내기</a>
+    <a href="https://github.com/yourgithub" target="_blank">GitHub 방문</a>
+    <a href="https://linkedin.com/in/yourlinkedin" target="_blank">LinkedIn</a>
+  </section>
 
   <footer>
-    <p>© 2025 현재호. 모든 권리 보유.</p>
+    © 2025 홍길동. All rights reserved.
   </footer>
+
+  <script>
+    const faders = document.querySelectorAll('[data-fade]');
+    const options = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, options);
+    faders.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
